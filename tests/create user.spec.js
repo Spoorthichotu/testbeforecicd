@@ -15,7 +15,7 @@ test("Create User (POST)", async ({ request }) => {
         'Content-Type': 'application/json'
       },
       data: {
-        email: "testuser@example1.com" // replace with dynamic value if needed
+        email: "testuser@example5.com" // replace with dynamic value if needed
       }
     }
   );

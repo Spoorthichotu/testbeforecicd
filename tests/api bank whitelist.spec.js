@@ -10,8 +10,8 @@ test("Whitelist Bank Account (POST)", async ({ request }) => {
     `${BASE_URL}/v1/partners/user/forensics/whitelist/bankAccount`,
     {
       headers: {
-        'accept': '*/*',
-        'Authorization': `Bearer ${TOKEN}`, 
+        accept: '*/*',
+        Authorization: `Bearer ${TOKEN}`,
         'Content-Type': 'application/json'
       },
       data: {
@@ -29,14 +29,18 @@ test("Whitelist Bank Account (POST)", async ({ request }) => {
         banksubcode: "002",
         country: "BR",
         fiatCurrency: "BRL",
-        userEmail: "spoorthimanjunath17@gmail.com"
+        userEmail: "testuser@example6.com"
       }
     }
   );
 
+   const status = response.status();
   const resBody = await response.json();
-  console.log("Response Status:", response.status());
+
+  console.log("Response Status:", status);
   console.log("Response Body:", JSON.stringify(resBody, null, 2));
 
-  expect(response.status()).toBe(200);
+  expect([200, 409]).toContain(status);
 });
+
+

@@ -1,4 +1,7 @@
 name: Playwright Tests
+env:
+        BASE_URL: ${{ secrets.BASE_URL }}
+        AUTH_TOKEN: ${{ secrets.AUTH_TOKEN }}
 on:
   push:
     branches: [ main, master ]

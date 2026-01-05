@@ -21,9 +21,10 @@ test("Create User (POST)", async ({ request }) => {
   );
 
   const resBody = await response.json();
-  console.log("Response Status:", response.status());
+  const status = response.status(); // ✅ define status variable
+
+  console.log("Response Status:", status);
   console.log("Response Body:", JSON.stringify(resBody, null, 2));
 
-  expect([201, 409]).toContain(status);
-
+  expect([201, 409]).toContain(status); // ✅ now works
 });

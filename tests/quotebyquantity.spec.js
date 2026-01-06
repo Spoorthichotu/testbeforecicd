@@ -21,7 +21,7 @@ test('Bankwire Payout – Quote by Quantity → Submit Order (Dynamic Data)', as
     receivingCurrency: config.receivingCurrency,
     receivingCountry: config.receivingCountry,
     sendingCountry: config.sendingCountry,
-    quantity: faker.number.int({ min: 10, max: 500 }), // dynamic quantity
+    quantity: faker.number.int({ min: 10, max: 500 }), 
     transactionType: config.transactionType,
     sourceOfFunds: config.sourceOfFunds,
     sender_msisdn: faker.phone.number('+63##########'),

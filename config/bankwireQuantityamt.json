@@ -1,0 +1,14 @@
+{
+  "coin": "USDC",
+  "recipientRelationship": "Self",
+  "remittancePurpose": "Gift",
+  "transferType": "BANK",
+  "sendingCurrency": "USD",
+  "receivingCurrency": "PHP",
+  "receivingCountry": "PH",
+  "sendingCountry": "US",
+  "accountNo":"002740204357",
+  "transactionType": "p2p",
+  "sourceOfFunds": "Salary",
+  "userEmail": "spoorthi2003@gmail.com"
+}

@@ -1,0 +1,8 @@
+{
+  "coin": "USDC",
+  "transferType": "BANK",
+  "sendingCurrency": "USD",
+  "receivingCurrency": "MXN",
+  "receivingCountry": "MX",
+  "sendingCountry": "AU"
+}

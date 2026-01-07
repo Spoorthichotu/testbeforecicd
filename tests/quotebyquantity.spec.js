@@ -54,16 +54,15 @@ test('Bankwire Payout – Quote by Quantity → Submit Order (Dynamic Data)', as
 
   expect([200, 201]).toContain(quoteStatus);
 
-  // =========================================================
+  
   // STEP 2: Extract quoteId
-  // =========================================================
+  
   const quoteId = quoteBody?.quote?.quoteId;
   console.log('Extracted Quote ID:', quoteId);
   expect(quoteId).toBeTruthy();
 
-  // =========================================================
   // STEP 3: Submit Order using Quote ID
-  // =========================================================
+  
   const submitResponse = await request.post(
     `${BASE_URL}/v1/payout/bankwire/submitOrder/bank`,
     {

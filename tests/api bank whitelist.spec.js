@@ -3,16 +3,19 @@ require('dotenv').config();
 const { test, expect } = require('@playwright/test');
 const { faker } = require('@faker-js/faker');
 
-// Load config data ✅
+// Load config data
 const config = require('../config/whitelistBankAccount.json');
 
+// Environment variables
 const BASE_URL = process.env.BASE_URL;
 const TOKEN = process.env.AUTH_TOKEN;
 
+// Safety check (helps debugging CI issues)
+console.log("BASE_URL:", BASE_URL);
+console.log("AUTH_TOKEN exists:", !!TOKEN);
 
 test("Whitelist Bank Account (POST) - Dynamic Data", async ({ request }) => {
 
-  // 🔹 Generate dynamic test data
   const payload = {
     accountHolderName: faker.person.fullName(),
     accountType: config.accountType,
@@ -44,15 +47,24 @@ test("Whitelist Bank Account (POST) - Dynamic Data", async ({ request }) => {
   );
 
   const status = response.status();
-  const resBody = await response.json();
+  const contentType = response.headers()['content-type'];
 
+  let resBody;
+  if (contentType && contentType.includes('application/json')) {
+    resBody = await response.json();
+  } else {
+    resBody = await response.text();
+  }
+
+  console.log("========== POSITIVE TEST ==========");
   console.log("Request Payload:", JSON.stringify(payload, null, 2));
   console.log("Response Status:", status);
-  console.log("Response Body:", JSON.stringify(resBody, null, 2));
+  console.log("Response Body:", resBody);
 
-  // ✅ API may return 200 (created) or 409 (already exists)
+  // API may return 200 (success) or 409 (already whitelisted)
   expect([200, 409]).toContain(status);
 });
+
 test("Whitelist Bank Account - Bank Name & Account Number Empty", async ({ request }) => {
 
   const payload = {
@@ -61,10 +73,10 @@ test("Whitelist Bank Account - Bank Name & Account Number Empty", async ({ reque
     mobile: faker.phone.number('##########'),
     provider: config.provider,
     accountHolderAddress: faker.location.streetAddress(),
-    beneficiaryBankName: "", // ❌
+    beneficiaryBankName: "", // ❌ empty
     beneficiaryBankAddress: faker.location.streetAddress(),
     beneficiaryBankCountry: config.beneficiaryBankCountry,
-    bankAccountNumber: "", // ❌
+    bankAccountNumber: "", // ❌ empty
     bicSwift: faker.finance.bic(),
     bankcode: faker.finance.routingNumber(),
     banksubcode: faker.string.numeric(3),
@@ -83,13 +95,21 @@ test("Whitelist Bank Account - Bank Name & Account Number Empty", async ({ reque
       data: payload
     }
   );
-  const status = response.status();
-  const resBody = await response.json();
 
+  const status = response.status();
+  const contentType = response.headers()['content-type'];
+
+  let resBody;
+  if (contentType && contentType.includes('application/json')) {
+    resBody = await response.json();
+  } else {
+    resBody = await response.text();
+  }
+
+  console.log("========== NEGATIVE TEST ==========");
   console.log("Request Payload:", JSON.stringify(payload, null, 2));
   console.log("Response Status:", status);
-  console.log("Response Body:", JSON.stringify(resBody, null, 2));
+  console.log("Response Body:", resBody);
 
-
-  expect(response.status()).toBe(400);
+  expect(status).toBe(400);
 });

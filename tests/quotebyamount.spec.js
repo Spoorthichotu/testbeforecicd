@@ -80,8 +80,8 @@ test('Bankwire Payout – Quote by amount → Submit Order (Dynamic Data)', asyn
   const submitStatus = submitResponse.status();
   const submitBody = await submitResponse.json();
 
-  console.log('Submit Status:', submitStatus);
-  console.log('Submit Response:', JSON.stringify(submitBody, null, 2));
+  console.log('Status:', submitStatus);
+  console.log('Response:', JSON.stringify(submitBody, null, 2));
 
   expect([200]).toContain(submitStatus);
 });

@@ -4,9 +4,9 @@ env:
         AUTH_TOKEN: ${{ secrets.AUTH_TOKEN }}
 on:
   push:
-    branches: [ main, master ]
+    branches: [ ci_cd_pipeline ]
   pull_request:
-    branches: [ main, master ]
+    branches: [ ci_cd_pipeline ]
 jobs:
   test:
     timeout-minutes: 60

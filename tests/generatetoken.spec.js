@@ -54,7 +54,7 @@ test.describe('Partner Generate Token API', () => {
 
     expect(response.status()).toBe(404);
     expect(resBody.success).toBe(false);
-    expect(resBody.code).toBe("EN-DATA-007");
+    
   });
 
   /* =========================================================

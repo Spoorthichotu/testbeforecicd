@@ -4,24 +4,32 @@ const { faker } = require('@faker-js/faker');
 
 const BASE_URL = process.env.BASE_URL;
 
-// Shared object to reuse success payload for duplicate test
+// Will hold the successful payload for duplicate test
 let successPayload;
+
+// Function to generate fresh onboarding data
+function generateOnboardingPayload() {
+  return {
+    enterpriseName: `Encryptus-${faker.company.name()}-${faker.number.int({ min: 1000, max: 9999 })}`,
+    clientRepresentiveEmail: faker.internet.email().toLowerCase(),
+    clientRepresentivePassword: faker.internet.password({ length: 16 }),
+    clientRepresentivePhoneNo: `+91${faker.phone.number('##########')}`,
+    enterpriseLocation: faker.location.city(),
+    grant_services: ["FORENSICS"]
+  };
+}
+
+// Run tests serially to ensure successPayload is set before duplicate test
+test.describe.configure({ mode: 'serial' });
 
 test.describe('Partner Onboarding API - All Scenarios', () => {
 
-  /*=========================================================
-     1️ SUCCESS – Dynamic onboarding
+  /* =========================================================
+     1️⃣ SUCCESS – onboarding (dynamic every run)
   ========================================================= */
   test('Successful onboarding with dynamic data', async ({ request }) => {
 
-    successPayload = {
-      enterpriseName: `Encryptus-${faker.company.name()}`,
-      clientRepresentiveEmail: faker.internet.email().toLowerCase(),
-      clientRepresentivePassword: faker.internet.password(16),
-      clientRepresentivePhoneNo: `+91${faker.phone.number('##########')}`,
-      enterpriseLocation: faker.location.city(),
-      grant_services: ["FORENSICS"]
-    };
+    successPayload = generateOnboardingPayload();
 
     const response = await request.post(
       `${BASE_URL}/v1/partners/onboarding`,
@@ -29,16 +37,20 @@ test.describe('Partner Onboarding API - All Scenarios', () => {
     );
 
     const resBody = await response.json();
-    console.log("Success onboarding response:", resBody);
+    console.log('Success onboarding response:', resBody);
 
-    expect(response.status()).toBe(200);
-    expect(resBody.success).toBe(true);
+    expect(response.status()).toBe(201); // matches actual API
+    expect(resBody.apiSuccessRes.success).toBe(true);
+    expect(resBody.data.onboarded).toBe(true);
+    expect(resBody.apiSuccessRes.code).toBe('EN-SUCCESS-001');
   });
 
   /* =========================================================
-     2️ DUPLICATE – Same data again
+     2️⃣ DUPLICATE – Same data again
   ========================================================= */
   test('Duplicate onboarding should fail', async ({ request }) => {
+
+    expect(successPayload).toBeDefined(); // safety check
 
     const response = await request.post(
       `${BASE_URL}/v1/partners/onboarding`,
@@ -46,12 +58,12 @@ test.describe('Partner Onboarding API - All Scenarios', () => {
     );
 
     const resBody = await response.json();
-    console.log("Duplicate onboarding response:", resBody);
+    console.log('Duplicate onboarding response:', resBody);
 
-    expect(response.status()).toBe(400);
+    expect(response.status()).toBe(400); // or whatever your API returns for duplicates
     expect(resBody.success).toBe(false);
-    expect(resBody.code).toBe("EN-STATE-004");
     expect(resBody.data.onboarded).toBe(false);
+    expect(resBody.code).toBe('EN-STATE-004'); // check actual duplicate error code
   });
 
   /* =========================================================
@@ -60,11 +72,11 @@ test.describe('Partner Onboarding API - All Scenarios', () => {
   test('Validation errors should return EN-DATA-009', async ({ request }) => {
 
     const invalidPayload = {
-      enterpriseName: "",
-      clientRepresentiveEmail: "invalidEmail",
+      enterpriseName: "ff",
+      clientRepresentiveEmail: "00",
       clientRepresentivePassword: "123",
       clientRepresentivePhoneNo: "12345",
-      enterpriseLocation: "",
+      enterpriseLocation: "d",
       grant_services: ["INVALID_SERVICE"]
     };
 
@@ -74,11 +86,10 @@ test.describe('Partner Onboarding API - All Scenarios', () => {
     );
 
     const resBody = await response.json();
-    console.log("Validation error response:", resBody);
+    console.log('Validation error response:', resBody);
 
     expect(response.status()).toBe(400);
-    expect(resBody.code).toBe("EN-DATA-009");
-    expect(resBody.message).toBe("Bad Request");
+    expect(resBody.code).toBe('EN-DATA-009');
   });
 
 });

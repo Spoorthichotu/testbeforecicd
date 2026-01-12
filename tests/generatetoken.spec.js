@@ -88,13 +88,16 @@ test.describe('Partner Generate Token API', () => {
   ========================================================= */
   test('Generate token successfully with valid details', async ({ request }) => {
 
-    const payload = {
-      partnerEmail: "spoorthimanjunath17@gmail.com",
-      partnerPassword: "mnbvcxzasdfghjkl",
-      grant_services: ["FORENSICS"],
-      clientID: "30b4ec68-147c-44bd-aae6-e1662d089ab6",
-      clientSecret: "04666c54-18fa-438e-919a-532ad2b93269"
-    };
+    const payload = 
+    {
+  partnerEmail: "rishabh@getpaisa.co",
+  partnerPassword: "P96zrbR@H_mquffu",
+  grant_services: [
+    "FORENSICS"
+  ],
+  clientID: "143a908c-f349-4f7b-abaf-99dcc4164d45",
+  clientSecret: "912ae862-3ce9-4dde-9324-36f62897c7b0"
+};
 
     const response = await request.post(
       `${BASE_URL}/v1/partners/generate/token`,

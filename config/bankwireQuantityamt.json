@@ -4,11 +4,11 @@
   "remittancePurpose": "Gift",
   "transferType": "BANK",
   "sendingCurrency": "USD",
-  "receivingCurrency": "PHP",
-  "receivingCountry": "PH",
+  "receivingCurrency": "KES",
+  "receivingCountry": "KE",
   "sendingCountry": "US",
-  "accountNo":"002740204357",
+  "accountNo":"1220175138015",
   "transactionType": "p2p",
   "sourceOfFunds": "Salary",
-  "userEmail": "spoorthi2003@gmail.com"
+  "userEmail": "spoorthi2003@gmail.com" 
 }

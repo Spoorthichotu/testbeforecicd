@@ -1,7 +1,7 @@
 require('dotenv').config();
 const { test, expect } = require('@playwright/test');
 const { faker } = require('@faker-js/faker');
-const config = require('../config/bankwireQuote.json');
+const config = require('../config/quotebyquantity.json');
 
 const BASE_URL = process.env.BASE_URL;
 const TOKEN = process.env.AUTH_TOKEN;

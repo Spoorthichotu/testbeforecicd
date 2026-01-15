@@ -4,10 +4,10 @@
   "remittancePurpose": "Gift",
   "transferType": "BANK",
   "sendingCurrency": "USD",
-  "receivingCurrency": "KES",
-  "receivingCountry": "KE",
+  "receivingCurrency": "ARS",
+  "receivingCountry": "AR",
   "sendingCountry": "US",
-  "accountNo":"1220175138015",
+  "accountNo":"0070011520000021741969",
   "transactionType": "p2p",
   "sourceOfFunds": "Salary",
   "userEmail": "spoorthi2003@gmail.com" 

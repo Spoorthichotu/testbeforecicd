@@ -4,10 +4,10 @@
   "remittancePurpose": "Gift",
   "transferType": "BANK",
   "sendingCurrency": "USD",
-  "receivingCurrency": "CNY",
-  "receivingCountry": "CN",
+  "receivingCurrency": "ARS",
+  "receivingCountry": "AR",
   "sendingCountry": "US",
-  "accountNo":"114830110455568",
+  "accountNo":"0070011520000021741969",
   "transactionType": "p2p",
   "sourceOfFunds": "Salary",
   "userEmail": "spoorthi2003@gmail.com" 

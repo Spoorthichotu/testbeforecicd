@@ -2,7 +2,7 @@
   "coin": "USDC",
   "transferType": "BANK",
   "sendingCurrency": "USD",
-  "receivingCurrency": "MXN",
-  "receivingCountry": "MX",
-  "sendingCountry": "AU"
+  "receivingCurrency": "NPR",
+  "receivingCountry": "NP",
+  "sendingCountry": "US"
 }

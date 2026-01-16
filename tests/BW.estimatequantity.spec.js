@@ -12,7 +12,7 @@ test("POST Estimated Quote by quantity – Bankwire (Dynamic quantity)", async (
   
   config.quantity = faker.number.int({ min: 100, max: 5000 }); 
   // Optionally: make userEmail dynamic
-  config.userEmail = faker.internet.email();
+  
 
   const response = await request.post(
     `${BASE_URL}/v1/payout/bankwire/estimatedquotebyquantity`,

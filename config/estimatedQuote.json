@@ -2,7 +2,9 @@
   "coin": "USDC",
   "transferType": "BANK",
   "sendingCurrency": "USD",
-  "receivingCurrency": "NPR",
-  "receivingCountry": "NP",
-  "sendingCountry": "US"
+  "receivingCurrency": "KES",
+  "receivingCountry": "KE",
+  "sendingCountry": "US",
+  "feeType": "standard",
+  "userEmail":"spoorthi2003@gmail.com"
 }

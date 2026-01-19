@@ -2,8 +2,8 @@
   "coin": "USDC",
   "transferType": "BANK",
   "sendingCurrency": "USD",
-  "receivingCurrency": "KES",
-  "receivingCountry": "KE",
+  "receivingCurrency": "MXN",
+  "receivingCountry": "MX",
   "sendingCountry": "US",
   "feeType": "standard",
   "userEmail":"spoorthi2003@gmail.com"

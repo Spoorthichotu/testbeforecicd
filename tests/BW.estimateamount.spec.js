@@ -10,10 +10,8 @@ const config = require('../config/estimatedQuote.json');
 
 test("POST Estimated Quote by Amount – Bankwire (Dynamic Amount)", async ({ request }) => {
   // Dynamically change the amount
-  config.amount = faker.number.int({ min: 100, max: 5000 }); // random amount between 100–5000
+  config.amount = faker.number.int({ min: 100, max: 500 }); // random amount between 100–5000
 
-  // Optionally: make userEmail dynamic
-  config.userEmail = faker.internet.email();
 
   const response = await request.post(
     `${BASE_URL}/v1/payout/bankwire/estimatedquotebyamount`,

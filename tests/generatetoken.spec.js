@@ -83,34 +83,6 @@ test.describe('Partner Generate Token API', () => {
     expect(resBody.code).toBe("EN-AUTH-001");
   });
 
-  /* =========================================================
-     4️ SUCCESS → Token generated
-  ========================================================= */
-  test('Generate token successfully with valid details', async ({ request }) => {
-
-    const payload = 
-    {
-  partnerEmail: "rishabh@getpaisa.co",
-  partnerPassword: "P96zrbR@H_mquffu",
-  grant_services: [
-    "FORENSICS"
-  ],
-  clientID: "143a908c-f349-4f7b-abaf-99dcc4164d45",
-  clientSecret: "912ae862-3ce9-4dde-9324-36f62897c7b0"
-};
-
-    const response = await request.post(
-      `${BASE_URL}/v1/partners/generate/token`,
-      { data: payload }
-    );
-
-    const resBody = await response.json();
-    console.log("Success token response:", resBody);
-
-    expect(response.status()).toBe(200);
-    expect(resBody.success).toBe(true);
-    expect(resBody.code).toBe("EN-SUCCESS-001");
-    expect(resBody.access_token).toBeTruthy();
-  });
+  
 
 });

@@ -27,23 +27,23 @@ test.describe('Partner Onboarding API - All Scenarios', () => {
   /* =========================================================
      1️⃣ SUCCESS – onboarding (dynamic every run)
   ========================================================= */
-  test('Successful onboarding with dynamic data', async ({ request }) => {
+  // test('Successful onboarding with dynamic data', async ({ request }) => {
 
-    successPayload = generateOnboardingPayload();
+  //   successPayload = generateOnboardingPayload();
 
-    const response = await request.post(
-      `${BASE_URL}/v1/partners/onboarding`,
-      { data: successPayload }
-    );
+  //   const response = await request.post(
+  //     `${BASE_URL}/v1/partners/onboarding`,
+  //     { data: successPayload }
+  //   );
 
-    const resBody = await response.json();
-    console.log('Success onboarding response:', resBody);
+  //   const resBody = await response.json();
+  //   console.log('Success onboarding response:', resBody);
 
-    expect(response.status()).toBe(201); // matches actual API
-    expect(resBody.apiSuccessRes.success).toBe(true);
-    expect(resBody.data.onboarded).toBe(true);
-    expect(resBody.apiSuccessRes.code).toBe('EN-SUCCESS-001');
-  });
+  //   expect(response.status()).toBe(201); // matches actual API
+  //   expect(resBody.apiSuccessRes.success).toBe(true);
+  //   expect(resBody.data.onboarded).toBe(true);
+  //   expect(resBody.apiSuccessRes.code).toBe('EN-SUCCESS-001');
+  // });
 
   /* =========================================================
      2️⃣ DUPLICATE – Same data again

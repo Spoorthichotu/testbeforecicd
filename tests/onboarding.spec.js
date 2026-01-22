@@ -19,7 +19,10 @@ function generateOnboardingPayload() {
   };
 }
 
-// Run tests serially to ensure successPayload is set before duplicate test
+// ✅ Initialize once so duplicate test works even if success test is commented
+successPayload = generateOnboardingPayload();
+
+// Run tests serially to ensure order
 test.describe.configure({ mode: 'serial' });
 
 test.describe('Partner Onboarding API - All Scenarios', () => {
@@ -39,7 +42,7 @@ test.describe('Partner Onboarding API - All Scenarios', () => {
   //   const resBody = await response.json();
   //   console.log('Success onboarding response:', resBody);
 
-  //   expect(response.status()).toBe(201); // matches actual API
+  //   expect(response.status()).toBe(201);
   //   expect(resBody.apiSuccessRes.success).toBe(true);
   //   expect(resBody.data.onboarded).toBe(true);
   //   expect(resBody.apiSuccessRes.code).toBe('EN-SUCCESS-001');
@@ -50,7 +53,7 @@ test.describe('Partner Onboarding API - All Scenarios', () => {
   ========================================================= */
   test('Duplicate onboarding should fail', async ({ request }) => {
 
-    expect(successPayload).toBeDefined(); // safety check
+    expect(successPayload).toBeDefined();
 
     const response = await request.post(
       `${BASE_URL}/v1/partners/onboarding`,
@@ -60,10 +63,10 @@ test.describe('Partner Onboarding API - All Scenarios', () => {
     const resBody = await response.json();
     console.log('Duplicate onboarding response:', resBody);
 
-    expect(response.status()).toBe(400); // or whatever your API returns for duplicates
+    expect(response.status()).toBe(400);
     expect(resBody.success).toBe(false);
     expect(resBody.data.onboarded).toBe(false);
-    expect(resBody.code).toBe('EN-STATE-004'); // check actual duplicate error code
+    expect(resBody.code).toBe('EN-STATE-004');
   });
 
   /* =========================================================

@@ -4,10 +4,10 @@
   "remittancePurpose": "Gift",
   "transferType": "BANK",
   "sendingCurrency": "USD",
-  "receivingCurrency": "PHP",
-  "receivingCountry": "PH",
+  "receivingCurrency": "NPR",
+  "receivingCountry": "NP",
   "sendingCountry": "US",
-  "accountNo":"002740204357",
+  "accountNo":"00700115200022",
   "transactionType": "p2p",
   "sourceOfFunds": "salary",
   "userEmail": "spoorthi2003@gmail.com" 

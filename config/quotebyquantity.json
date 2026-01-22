@@ -4,10 +4,10 @@
   "remittancePurpose": "Gift",
   "transferType": "BANK",
   "sendingCurrency": "USD",
-  "receivingCurrency": "KES",
-  "receivingCountry": "KE",
+  "receivingCurrency": "NPR",
+  "receivingCountry": "NP",
   "sendingCountry": "US",
-  "accountNo":"1220175138015",
+  "accountNo":"00700115200022",
   "transactionType": "p2p",
   "sourceOfFunds": "Salary",
   "userEmail": "spoorthi2003@gmail.com" 

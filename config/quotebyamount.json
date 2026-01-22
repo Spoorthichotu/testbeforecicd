@@ -1,14 +1,19 @@
 {
-  "coin": "USDC",
+  "userEmail": "spoorthi2003@gmail.com",
+  "coin": "USDT",
   "recipientRelationship": "Self",
   "remittancePurpose": "Gift",
   "transferType": "BANK",
+  "msisdn": "+201234567890",
+  "accountNo": "00700115200022",
   "sendingCurrency": "USD",
   "receivingCurrency": "EGP",
   "receivingCountry": "EG",
   "sendingCountry": "US",
-  "accountNo":"00700115200022",
   "transactionType": "p2p",
-  "sourceOfFunds": "salary",
-  "userEmail": "spoorthi2003@gmail.com" 
+  "sourceOfFunds": "Salary",
+  "sender_msisdn": "+11234567890",
+  "receiver_msisdn": "+201234567890",
+  "receiver_firstName": "cherish",
+  "receiver_lastName": "c"
 }

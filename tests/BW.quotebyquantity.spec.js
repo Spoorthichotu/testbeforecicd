@@ -9,26 +9,26 @@ const TOKEN = process.env.AUTH_TOKEN;
 test('Bankwire Payout – Quote by Quantity → Submit Order (Dynamic Data)', async ({ request }) => {
 
   // 🔹 Generate dynamic test data
-  const quotePayload = {
-    userEmail: config.userEmail,
-    coin: config.coin,
-    recipientRelationship: config.recipientRelationship,
-    remittancePurpose: config.remittancePurpose,
-    transferType: config.transferType,
-    msisdn: faker.phone.number('+63##########'),
-    accountNo: config.accountNo,
-    sendingCurrency: config.sendingCurrency,
-    receivingCurrency: config.receivingCurrency,
-    receivingCountry: config.receivingCountry,
-    sendingCountry: config.sendingCountry,
-    quantity: faker.number.int({ min: 10, max: 500 }), 
-    transactionType: config.transactionType,
-    sourceOfFunds: config.sourceOfFunds,
-    sender_msisdn: faker.phone.number('+63##########'),
-    receiver_msisdn: faker.phone.number('+63##########'),
-    receiver_firstName: faker.person.firstName(),
-    receiver_lastName: faker.person.lastName()
-  };
+   const quotePayload = {
+  userEmail: config.userEmail,
+  coin: config.coin,
+  recipientRelationship: config.recipientRelationship,
+  remittancePurpose: config.remittancePurpose,
+  transferType: config.transferType,
+  msisdn: config.msisdn,
+  accountNo: config.accountNo, // ✅ fix for v10+
+  sendingCurrency: config.sendingCurrency,
+  receivingCurrency: config.receivingCurrency,
+  receivingCountry: config.receivingCountry,
+  sendingCountry: config.sendingCountry,
+  quantity: faker.number.int({ min: 100, max: 5000 }),
+  transactionType: config.transactionType,
+  sourceOfFunds: config.sourceOfFunds,
+  sender_msisdn: config.sender_msisdn,
+  receiver_msisdn: config.receiver_msisdn,
+  receiver_firstName: config.receiver_firstName,
+  receiver_lastName: config.receiver_lastName
+};
 
   // =========================================================
   // STEP 1: Generate Quote

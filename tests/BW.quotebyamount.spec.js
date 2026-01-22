@@ -15,7 +15,7 @@ test('Bankwire Payout – Quote by amount → Submit Order (Dynamic Data)', asyn
   recipientRelationship: config.recipientRelationship,
   remittancePurpose: config.remittancePurpose,
   transferType: config.transferType,
-  msisdn: faker.phone.number('+63##########'),
+  msisdn: config.msisdn,
   accountNo: config.accountNo, // ✅ fix for v10+
   sendingCurrency: config.sendingCurrency,
   receivingCurrency: config.receivingCurrency,
@@ -24,10 +24,10 @@ test('Bankwire Payout – Quote by amount → Submit Order (Dynamic Data)', asyn
   amount: faker.number.int({ min: 100, max: 5000 }),
   transactionType: config.transactionType,
   sourceOfFunds: config.sourceOfFunds,
-  sender_msisdn: faker.phone.number('+63##########'),
-  receiver_msisdn: faker.phone.number('+63##########'),
-  receiver_firstName: faker.person.firstName(),
-  receiver_lastName: faker.person.lastName()
+  sender_msisdn: config.sender_msisdn,
+  receiver_msisdn: config.receiver_msisdn,
+  receiver_firstName: config.receiver_firstName,
+  receiver_lastName: config.receiver_lastName
 };
 
 

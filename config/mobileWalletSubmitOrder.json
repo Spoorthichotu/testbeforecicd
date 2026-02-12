@@ -1,0 +1,10 @@
+{
+  "transactionType": "p2p",
+  "sourceOfFunds": "salary",
+  "sender_msisdn": "+237019642271",
+  "receiver_msisdn": "+237019642271",
+  "walletProviderName": "string",
+  "walletProviderCode": "23708",
+  "receiver_firstName": "NOSHEEN",
+  "receiver_lastName": "ASGHAR"
+}

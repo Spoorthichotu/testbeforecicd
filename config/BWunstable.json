@@ -1,0 +1,19 @@
+{
+  "transactionType": "p2p",
+  "quantity": "250.00",
+  "sourceOfFunds": "Salary",
+  "userEmail": "spoorthi2003@gmail.com",
+  "coin": "USDT",
+  "recipientRelationship": "Family",
+  "remittancePurpose": "Personal Support",
+  "transferType": "BANK",
+  "msisdn": "+15551234567",
+  "accountNo": "00700115200022",
+  "sendingCurrency": "USD",
+  "receivingCurrency": "EGP",
+  "receivingCountry": "EG",
+  "sendingCountry": "US",
+  "receiver_firstName": "John",
+  "receiver_lastName": "Doe",
+  "feeType": "standard"
+}

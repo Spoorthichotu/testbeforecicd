@@ -1,0 +1,14 @@
+{
+"userEmail": "spoorthi2003@gmail.com",
+"coin": "USDC",
+"recipientRelationship": "Brother",
+"remittancePurpose": "Gift",
+"transferType": "WALLET",
+"msisdn": "+237019642271",
+"accountNo": "string",
+"sendingCurrency": "USD",
+"receivingCurrency": "XAF",
+"receivingCountry": "CM",
+"sendingCountry": "US",
+"quantity": 100
+}

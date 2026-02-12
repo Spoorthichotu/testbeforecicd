@@ -2,8 +2,8 @@
   "coin": "USDC",
   "transferType": "BANK",
   "sendingCurrency": "USD",
-  "receivingCurrency": "NPR",
-  "receivingCountry": "NP",
+  "receivingCurrency": "CNY",
+  "receivingCountry": "CN",
   "sendingCountry": "US",
   "feeType": "standard",
   "userEmail":"spoorthi2003@gmail.com"

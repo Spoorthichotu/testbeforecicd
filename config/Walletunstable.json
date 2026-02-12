@@ -1,0 +1,23 @@
+{
+  "transactionType": "p2p",
+  "quantity": "250",
+  "sourceOfFunds": "Salary",
+  "userEmail": "spoorthi2003@gmail.com",
+  "coin": "USDT",
+  "recipientRelationship": "Family",
+  "remittancePurpose": "Personal Support",
+  "transferType": "Wallet",
+  "msisdn": "+237019642271",
+  "accountNo": "string",
+  "sendingCurrency": "USD",
+  "receivingCurrency": "XAF",
+  "receivingCountry": "CF",
+  "sendingCountry": "US",
+  "receiver_firstName": "John",
+  "receiver_lastName": "Doe",
+  "sender_msisdn": "+237019642271",
+  "receiver_msisdn": "+237019642271",
+  "walletProviderName": "string",
+  "walletProviderCode": "23708",
+  "feeType": "standard"
+}

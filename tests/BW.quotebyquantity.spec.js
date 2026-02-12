@@ -16,7 +16,7 @@ test('Bankwire Payout – Quote by Quantity → Submit Order (Dynamic Data)', as
   remittancePurpose: config.remittancePurpose,
   transferType: config.transferType,
   msisdn: config.msisdn,
-  accountNo: config.accountNo, // ✅ fix for v10+
+  accountNo: config.accountNo, 
   sendingCurrency: config.sendingCurrency,
   receivingCurrency: config.receivingCurrency,
   receivingCountry: config.receivingCountry,
@@ -30,9 +30,9 @@ test('Bankwire Payout – Quote by Quantity → Submit Order (Dynamic Data)', as
   receiver_lastName: config.receiver_lastName
 };
 
-  // =========================================================
+  
   // STEP 1: Generate Quote
-  // =========================================================
+  
   const quoteResponse = await request.post(
     `${BASE_URL}/v1/payout/bankwire/quotebyquantity`,
     {

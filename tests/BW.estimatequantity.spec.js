@@ -11,7 +11,7 @@ const config = require('../config/estimatedQuotequantity.json');
 test("POST Estimated Quote by quantity – Bankwire (Dynamic quantity)", async ({ request }) => {
   
   config.quantity = faker.number.int({ min: 100, max: 5000 }); 
-  // Optionally: make userEmail dynamic
+  
   
 
   const response = await request.post(
@@ -22,7 +22,7 @@ test("POST Estimated Quote by quantity – Bankwire (Dynamic quantity)", async (
         Authorization: `Bearer ${TOKEN}`,
         'Content-Type': 'application/json',
       },
-      data: config, // ✅ use config here
+      data: config, 
     }
   );
 

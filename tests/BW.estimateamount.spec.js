@@ -9,8 +9,8 @@ const TOKEN = process.env.AUTH_TOKEN;
 const config = require('../config/estimatedQuote.json');
 
 test("POST Estimated Quote by Amount – Bankwire (Dynamic Amount)", async ({ request }) => {
-  // Dynamically change the amount
-  config.amount = faker.number.int({ min: 100, max: 500 }); // random amount between 100–5000
+  
+  config.amount = faker.number.int({ min: 100, max: 500 }); 
 
 
   const response = await request.post(

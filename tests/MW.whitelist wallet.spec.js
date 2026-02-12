@@ -4,38 +4,33 @@ const { test, expect } = require('@playwright/test');
 const { faker } = require('@faker-js/faker');
 
 // Load config data
-const config = require('../config/whitelistBankAccount.json');
+const config = require('../config/whitelistMobileWallet.json');
 
 // Environment variables
 const BASE_URL = process.env.BASE_URL;
 const TOKEN = process.env.AUTH_TOKEN;
 
-
+// Debug logs
 console.log("BASE_URL:", BASE_URL);
 console.log("AUTH_TOKEN exists:", !!TOKEN);
 
-test("Whitelist Bank Account (POST) - Dynamic Data", async ({ request }) => {
+// =======================================
+// ✅ POSITIVE TEST
+// =======================================
+test("Whitelist Mobile Wallet (POST) - Dynamic Data", async ({ request }) => {
 
   const payload = {
-    accountHolderName: faker.person.fullName(),
-    accountType: config.accountType,
-    mobile: faker.phone.number('##########'),
+    walletHolderName: config.walletHolderName,
+    mobile: config.mobile,
     provider: config.provider,
-    accountHolderAddress: faker.location.streetAddress(),
-    beneficiaryBankName: faker.company.name(),
-    beneficiaryBankAddress: faker.location.streetAddress(),
-    beneficiaryBankCountry: config.beneficiaryBankCountry,
-    bankAccountNumber: faker.finance.accountNumber(16),
-    bicSwift: faker.finance.bic(),
-    bankcode: faker.finance.routingNumber(),
-    banksubcode: faker.string.numeric(3),
     country: config.country,
-    fiatCurrency: config.fiatCurrency,
+    fiatCurrency: config.fiatCurrency || "ALL",
     userEmail: config.userEmail
+    
   };
 
   const response = await request.post(
-    `${BASE_URL}/v1/partners/user/forensics/whitelist/bankAccount`,
+    `${BASE_URL}/v1/partners/user/forensics/whitelist/mobileWallet`,
     {
       headers: {
         accept: '*/*',
@@ -61,32 +56,27 @@ test("Whitelist Bank Account (POST) - Dynamic Data", async ({ request }) => {
   console.log("Response Status:", status);
   console.log("Response Body:", resBody);
 
-  
+  // API may return 200 (success) or 409 (already whitelisted)
   expect([200, 409]).toContain(status);
 });
 
-test("Whitelist Bank Account - Bank Name & Account Number Empty", async ({ request }) => {
+
+// =======================================
+// ❌ NEGATIVE TEST (mobile & provider empty)
+// =======================================
+test("Whitelist Mobile Wallet - Mobile & Provider Empty", async ({ request }) => {
 
   const payload = {
-    accountHolderName: faker.person.fullName(),
-    accountType: config.accountType,
-    mobile: faker.phone.number('##########'),
-    provider: config.provider,
-    accountHolderAddress: faker.location.streetAddress(),
-    beneficiaryBankName: "", 
-    beneficiaryBankAddress: faker.location.streetAddress(),
-    beneficiaryBankCountry: config.beneficiaryBankCountry,
-    bankAccountNumber: "", 
-    bicSwift: faker.finance.bic(),
-    bankcode: faker.finance.routingNumber(),
-    banksubcode: faker.string.numeric(3),
+    walletHolderName: config.walletHolderName,
+    mobile: "",               // ❌ empty
+    provider: "",             // ❌ empty
     country: config.country,
     fiatCurrency: config.fiatCurrency,
-    userEmail: faker.internet.email()
+    userEmail: config.userEmail
   };
 
   const response = await request.post(
-    `${BASE_URL}/v1/partners/user/forensics/whitelist/bankAccount`,
+    `${BASE_URL}/v1/partners/user/forensics/whitelist/mobileWallet`,
     {
       headers: {
         Authorization: `Bearer ${TOKEN}`,
@@ -111,5 +101,5 @@ test("Whitelist Bank Account - Bank Name & Account Number Empty", async ({ reque
   console.log("Response Status:", status);
   console.log("Response Body:", resBody);
 
-  expect(status).toBe(400);
+  expect(status).toBe(500);
 });

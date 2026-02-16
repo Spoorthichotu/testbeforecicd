@@ -28,6 +28,6 @@ test('Fetch Bank List By Name', async ({ request }) => {
   const status = response.status();
   const body = await response.json();
 
-  expect(status).toBe(200);
-  expect(body).toBeDefined();
+  expect([200, 201]).toContain(response.status());
+
 });

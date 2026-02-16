@@ -32,5 +32,6 @@ test("POST Estimated Quote by Amount – Bankwire (Dynamic Amount)", async ({ re
   console.log("Estimated Quote Status:", status);
   console.log("Estimated Quote Response:", JSON.stringify(resBody, null, 2));
 
-  expect([200, 201]).toContain(status);
+  expect(status).toBe(200);
+  expect(body).toBeDefined();
 });

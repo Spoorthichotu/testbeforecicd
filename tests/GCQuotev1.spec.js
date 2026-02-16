@@ -1,0 +1,76 @@
+require('dotenv').config();
+const { test, expect } = require('@playwright/test');
+
+const BASE_URL = process.env.BASE_URL;
+const TOKEN = process.env.AUTH_TOKEN;
+
+const quotePayload = require('../config/giftcardQuote1.json');
+
+test.describe('Giftcard Quote V2 → Giftcard Order V2 flow', () => {
+
+  test('Generate giftcard quote (v2) and place order (v2)', async ({ request }) => {
+
+    // ---------- STEP 1: CREATE GIFTCARD QUOTE (V2) ----------
+    console.log('Creating giftcard quote (v2) with payload:');
+    console.log(JSON.stringify(quotePayload, null, 2));
+
+    const quoteResponse = await request.post(
+      `${BASE_URL}/v1/payout/giftcard/quote/v2`,
+      {
+        headers: {
+          accept: '*/*',
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${TOKEN}`
+        },
+        data: quotePayload
+      }
+    );
+
+    const quoteStatus = quoteResponse.status();
+    const quoteBody = await quoteResponse.json();
+
+    console.log('Quote Status:', quoteStatus);
+    console.log('Quote Response:', JSON.stringify(quoteBody, null, 2));
+
+    // Quote can return 200 or 201
+    expect([200, 201]).toContain(quoteStatus);
+
+    // ---------- STEP 2: EXTRACT quoteId ----------
+    const quoteId = quoteBody?.quoteId || quoteBody?.quote?.quoteId;
+    console.log('Extracted Quote ID:', quoteId);
+    expect(quoteId).toBeTruthy();
+
+    // ---------- STEP 3: PLACE GIFTCARD ORDER (V2) ----------
+    const orderResponse = await request.post(
+      `${BASE_URL}/v1/payout/giftcard/order/v2`,
+      {
+        headers: {
+          accept: '*/*',
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${TOKEN}`
+        },
+        data: { quoteId }
+      }
+    );
+
+    const orderStatus = orderResponse.status();
+    const orderBody = await orderResponse.json();
+
+    console.log('Order Status:', orderStatus);
+    console.log('Order Response:', JSON.stringify(orderBody, null, 2));
+
+    // Order assertions
+    expect([200, 201]).toContain(orderStatus);
+    expect(orderBody).toBeDefined();
+
+    // Optional safety checks
+    if (orderBody.orderId) {
+      expect(orderBody.orderId).toBeTruthy();
+    }
+
+    if (orderBody.status) {
+      expect(orderBody.status).toBeTruthy();
+    }
+  });
+
+});

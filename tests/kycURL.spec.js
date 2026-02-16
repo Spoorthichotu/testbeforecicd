@@ -5,7 +5,7 @@ const BASE_URL = process.env.BASE_URL;
 const TOKEN = process.env.AUTH_TOKEN;
 
 // Load inputs from JSON
-const kycUrlData = require('../config/KycUrl.json');
+const kycUrlData = require('../config/kycUrl.json');
 
 test.describe('GET /v1/partners/kycurl/v2', () => {
 
@@ -14,7 +14,7 @@ test.describe('GET /v1/partners/kycurl/v2', () => {
     const { accountType, email } = kycUrlData;
 
     if (!accountType || !email) {
-      throw new Error("accountType or email missing in config/KYCurl.json");
+      throw new Error("accountType or email missing in config/kycUrl.json");
     }
 
     console.log("Using accountType:", accountType);

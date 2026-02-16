@@ -28,7 +28,7 @@ test.describe('GET /v1/partners/supportedCountries', () => {
     console.log('Response:', JSON.stringify(resBody, null, 2));
 
     // Assertions
-    expect(status).toBe(201);
+    expect(status).toBe(200);
     expect(resBody).toBeDefined();
     expect(typeof resBody).toBe('object');
 

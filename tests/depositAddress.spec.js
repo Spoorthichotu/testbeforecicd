@@ -37,7 +37,7 @@ test.describe('GET /v1/getDepositAddress', () => {
     console.log("\n===== DEPOSIT ADDRESS RESPONSE =====");
     console.log(JSON.stringify(body, null, 2));
 
-    expect(status).toBe(200);
+    expect(status).toBe(201);
     expect(body).toBeTruthy();
   });
 

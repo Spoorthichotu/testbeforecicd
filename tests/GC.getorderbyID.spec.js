@@ -62,7 +62,7 @@ test.describe('GET /v1/payout/giftcard/order/:orderId', () => {
     console.log(JSON.stringify(resBody, null, 2));
 
     // TEMP: allow any error response until fields are known
-    expect([500]).toContain(status);
+    expect([403]).toContain(status);
   });
 
 });

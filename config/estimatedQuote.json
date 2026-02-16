@@ -2,9 +2,9 @@
   "coin": "USDC",
   "transferType": "BANK",
   "sendingCurrency": "USD",
-  "receivingCurrency": "CNY",
-  "receivingCountry": "CN",
+  "receivingCurrency": "TRY",
+  "receivingCountry": "TR",
   "sendingCountry": "US",
   "feeType": "standard",
-  "userEmail":"spoorthi2003@gmail.com"
+  "userEmail":"spoorthi2026@gmail.com"
 }

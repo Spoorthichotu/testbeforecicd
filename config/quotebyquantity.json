@@ -1,19 +1,19 @@
 {
   "userEmail": "spoorthi2026@gmail.com",
   "coin": "USDT",
-  "recipientRelationship": "Self",
+  "recipientRelationship": "Brother",
   "remittancePurpose": "Gift",
   "transferType": "BANK",
-  "msisdn": "+201234567890",
-  "accountNo": "00700115200022",
+  "msisdn": "916363010144",
+  "accountNo": "221201089805",
   "sendingCurrency": "USD",
-  "receivingCurrency": "EGP",
-  "receivingCountry": "EG",
+  "receivingCurrency": "INR",
+  "receivingCountry": "IN",
   "sendingCountry": "US",
   "transactionType": "p2p",
   "sourceOfFunds": "Salary",
-  "sender_msisdn": "+11234567890",
-  "receiver_msisdn": "+201234567890",
-  "receiver_firstName": "cherish",
-  "receiver_lastName": "c"
+  "sender_msisdn": "916363010144",
+  "receiver_msisdn": "916363010144",
+  "receiver_firstName": "Spoorthi",
+  "receiver_lastName": "m"
 }
